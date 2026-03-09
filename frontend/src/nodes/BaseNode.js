@@ -56,24 +56,29 @@ export const createNode = (config) => {
         style={{
           width,
           height,
-          border: "1px solid black",
+          border: "1px solid #dee2e6",
           backgroundColor: bgColor,
-          borderRadius: "4px",
+          borderRadius: "8px",
           padding: "8px",
           fontSize: "12px",
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
         }}
       >
         {/* Title */}
-        <div style={{ fontWeight: "bold", marginBottom: "4px" }}>
+        <div
+          style={{ fontWeight: "bold", marginBottom: "4px", color: "#495057" }}
+        >
           {config.title}
         </div>
 
         {/* Description */}
         {config.description && (
-          <div style={{ fontSize: "10px", color: "#666", marginBottom: "4px" }}>
+          <div
+            style={{ fontSize: "10px", color: "#6c757d", marginBottom: "4px" }}
+          >
             {config.description}
           </div>
         )}
@@ -101,7 +106,13 @@ export const createNode = (config) => {
               type="target"
               position={handle.position}
               id={`${id}-${handle.id}`}
-              style={handle.top !== undefined ? { top: `${handle.top}%` } : {}}
+              style={{
+                ...(handle.top !== undefined ? { top: `${handle.top}%` } : {}),
+                background: "#007bff",
+                border: "2px solid #ffffff",
+                width: "8px",
+                height: "8px",
+              }}
             />
           ))}
 
@@ -114,7 +125,13 @@ export const createNode = (config) => {
               type="source"
               position={handle.position}
               id={`${id}-${handle.id}`}
-              style={handle.top !== undefined ? { top: `${handle.top}%` } : {}}
+              style={{
+                ...(handle.top !== undefined ? { top: `${handle.top}%` } : {}),
+                background: "#007bff",
+                border: "2px solid #ffffff",
+                width: "8px",
+                height: "8px",
+              }}
             />
           ))}
       </div>
@@ -130,13 +147,19 @@ const FormField = ({ field, value, onChange }) => {
     case "text":
       return (
         <div style={{ marginBottom: "4px" }}>
-          <label>
+          <label style={{ fontSize: "11px", color: "#6c757d" }}>
             {field.label}:{" "}
             <input
               type="text"
               value={value}
               onChange={(e) => onChange(e.target.value)}
-              style={{ width: "100px" }}
+              style={{
+                width: "100px",
+                padding: "2px 4px",
+                border: "1px solid #ced4da",
+                borderRadius: "3px",
+                fontSize: "11px",
+              }}
             />
           </label>
         </div>
@@ -145,12 +168,19 @@ const FormField = ({ field, value, onChange }) => {
     case "textarea":
       return (
         <div style={{ marginBottom: "4px" }}>
-          <label>
+          <label style={{ fontSize: "11px", color: "#6c757d" }}>
             {field.label}:{" "}
             <textarea
               value={value}
               onChange={(e) => onChange(e.target.value)}
-              style={{ width: "100%", height: "40px", fontSize: "10px" }}
+              style={{
+                width: "100%",
+                height: "40px",
+                fontSize: "10px",
+                padding: "2px 4px",
+                border: "1px solid #ced4da",
+                borderRadius: "3px",
+              }}
               rows="2"
             />
           </label>
@@ -160,9 +190,18 @@ const FormField = ({ field, value, onChange }) => {
     case "select":
       return (
         <div style={{ marginBottom: "4px" }}>
-          <label>
+          <label style={{ fontSize: "11px", color: "#6c757d" }}>
             {field.label}:{" "}
-            <select value={value} onChange={(e) => onChange(e.target.value)}>
+            <select
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              style={{
+                padding: "2px 4px",
+                border: "1px solid #ced4da",
+                borderRadius: "3px",
+                fontSize: "11px",
+              }}
+            >
               {field.options?.map((opt) => (
                 <option key={opt.value} value={opt.value}>
                   {opt.label}
@@ -176,13 +215,19 @@ const FormField = ({ field, value, onChange }) => {
     case "number":
       return (
         <div style={{ marginBottom: "4px" }}>
-          <label>
+          <label style={{ fontSize: "11px", color: "#6c757d" }}>
             {field.label}:{" "}
             <input
               type="number"
               value={value}
               onChange={(e) => onChange(Number(e.target.value))}
-              style={{ width: "60px" }}
+              style={{
+                width: "60px",
+                padding: "2px 4px",
+                border: "1px solid #ced4da",
+                borderRadius: "3px",
+                fontSize: "11px",
+              }}
             />
           </label>
         </div>
