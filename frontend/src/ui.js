@@ -20,6 +20,7 @@ const nodeTypes = {
   llm: LLMNode,
   customOutput: OutputNode,
   text: TextNode,
+  apiCall: APICallNode, // new API call node
 };
 
 const selector = (state) => ({
